@@ -1,0 +1,8 @@
+/Users/lucperkins/workspace/reflect/reflect-dotnet/bin/Debug/netcoreapp1.1/reflect-dotnet.deps.json
+/Users/lucperkins/workspace/reflect/reflect-dotnet/bin/Debug/netcoreapp1.1/reflect-dotnet.runtimeconfig.json
+/Users/lucperkins/workspace/reflect/reflect-dotnet/bin/Debug/netcoreapp1.1/reflect-dotnet.runtimeconfig.dev.json
+/Users/lucperkins/workspace/reflect/reflect-dotnet/bin/Debug/netcoreapp1.1/reflect-dotnet.dll
+/Users/lucperkins/workspace/reflect/reflect-dotnet/bin/Debug/netcoreapp1.1/reflect-dotnet.pdb
+/Users/lucperkins/workspace/reflect/reflect-dotnet/obj/Debug/netcoreapp1.1/reflect-dotnet.AssemblyInfo.cs
+/Users/lucperkins/workspace/reflect/reflect-dotnet/obj/Debug/netcoreapp1.1/reflect-dotnet.dll
+/Users/lucperkins/workspace/reflect/reflect-dotnet/obj/Debug/netcoreapp1.1/reflect-dotnet.pdb
