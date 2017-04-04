@@ -30,7 +30,7 @@ namespace Reflect
                 case Op.GreaterThanOrEqualTo: return ">=";
                 case Op.LessThanOrEqualTo: return "<=";
                 case Op.Contains: return "=~";
-                default: return "=";
+                default: return "";
             }
         }
 
@@ -46,8 +46,8 @@ namespace Reflect
             }
             else
             {
-                vs = new string[0];
-                v = value;
+                vs = new string[0]{};
+                v = this.value;
             }
 
             object[] s = new object[4]{field, opString(), v, vs};
@@ -75,18 +75,15 @@ namespace Reflect
         {
             string[] ps = new string[parameters.Length];
 
-            for (int i = 0; i < parameters.Length; i++) {
+            for (int i = 0; i < parameters.Length; i++)
+            {
                 ps[i] = parameters[i].ToString();
             }
 
             Array.Sort(ps);
-
             string joined = String.Join("\n", ps);
-
             HMACSHA256 mac = new HMACSHA256(Encoding.ASCII.GetBytes(secretKey));
-            
             byte[] hash = mac.ComputeHash(Encoding.ASCII.GetBytes($"V2\n{joined}"));
-
             return $"=2={System.Convert.ToBase64String(hash)}";
         }
     }
