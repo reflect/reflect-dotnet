@@ -28,4 +28,12 @@ namespace Reflect
             return "string";
         }
     }
+
+    public class Generator
+    {
+        public static string GenerateToken(string secretKey, Parameter[] parameters)
+        {
+            return "string";
+        }
+    }
 }
