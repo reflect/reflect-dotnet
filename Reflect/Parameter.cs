@@ -16,7 +16,7 @@ namespace Reflect
 
         public enum Op
         {
-            Equals, NotEquals
+            Equals, NotEquals, GreaterThan, LessThan, GreaterThanOrEqualTo, LessThanOrEqualTo, Contains
         }
 
         private string opString()
@@ -25,13 +25,32 @@ namespace Reflect
             {
                 case Op.Equals: return "=";
                 case Op.NotEquals: return "!=";
+                case Op.GreaterThan: return ">";
+                case Op.LessThan: return "<";
+                case Op.GreaterThanOrEqualTo: return ">=";
+                case Op.LessThanOrEqualTo: return "<=";
+                case Op.Contains: return "=~";
                 default: return "=";
             }
         }
 
         public override string ToString()
         {
-            string[] s = new string[3]{field, opString(), value};
+            string v;
+            string[] vs;
+
+            if (anyValue != null) {
+                Array.Sort(anyValue);
+                vs = anyValue;
+                v = "";
+            }
+            else
+            {
+                vs = new string[0];
+                v = value;
+            }
+
+            object[] s = new object[4]{field, opString(), v, vs};
             return SerializeObject(s);
         }
 
@@ -52,27 +71,23 @@ namespace Reflect
 
     public class TokenGenerator
     {
-        public static string Generate(string secretKey, List<Parameter> parameters)
+        public static string Generate(string secretKey, Parameter[] parameters)
         {
-            List<string> s = new List<string>();
+            string[] ps = new string[parameters.Length];
 
-            foreach (Parameter param in parameters)
-            {
-                if (param.anyValue != null)
-                {
-                    string[] vals = param.anyValue;
-                    Array.Sort(vals);
-                }
-
-                s.Add("some string");
+            for (int i = 0; i < parameters.Length; i++) {
+                ps[i] = parameters[i].ToString();
             }
-            string joined = String.Join("\n", s);
 
-            string msg = $"V2\n{joined}";
+            Array.Sort(ps);
+
+            string joined = String.Join("\n", ps);
+
             HMACSHA256 mac = new HMACSHA256(Encoding.ASCII.GetBytes(secretKey));
-            byte[] hash = mac.ComputeHash(Encoding.ASCII.GetBytes(msg));
+            
+            byte[] hash = mac.ComputeHash(Encoding.ASCII.GetBytes($"V2\n{joined}"));
 
-            return $"=2={msg}";
+            return $"=2={System.Convert.ToBase64String(hash)}";
         }
     }
 }
