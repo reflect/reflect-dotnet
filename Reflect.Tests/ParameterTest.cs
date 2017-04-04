@@ -1,6 +1,7 @@
 using Xunit;
 using System;
 using Reflect;
+using System.Collections.Generic;
 
 namespace Reflect.Tests
 {
@@ -9,8 +10,7 @@ namespace Reflect.Tests
         [Fact]
         public void TestParameterString()
         {
-            Parameter p = new Parameter("Region", Parameter.Op.Equals, "Northwest");
-            Console.WriteLine(p.ToString());
+            Console.WriteLine(TokenGenerator.Generate("something", new List<Parameter>{}));
         }
     }
 }
