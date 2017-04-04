@@ -36,21 +36,7 @@ namespace Reflect
 
         public override string ToString()
         {
-            string v;
-            string[] vs;
-
-            if (anyValue != null) {
-                Array.Sort(anyValue);
-                vs = anyValue;
-                v = "";
-            }
-            else
-            {
-                vs = new string[0]{};
-                v = this.value;
-            }
-
-            object[] s = new object[4]{field, opString(), v, vs};
+            object[] s = new object[4]{field, opString(), value, anyValue};
             return SerializeObject(s);
         }
 
@@ -59,12 +45,14 @@ namespace Reflect
             field = f;
             op = o;
             value = v;
+            anyValue = new string[0];
         }
 
         public Parameter(string f, Op o, string[] anyV)
         {
             field = f;
             op = o;
+            value = "";
             anyValue = anyV;
         }
     }
