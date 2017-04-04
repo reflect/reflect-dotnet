@@ -30,13 +30,15 @@ namespace reflect_dotnet
             value = v;
         }
 
-        public Parameter(string f, Op o, string[] v) {
+        public Parameter(string f, Op o, string[] v)
+        {
             field = f;
             op = o;
             anyValue = v;
         }
 
-        public override string ToString() {
+        public override string ToString()
+        {
             string valueString;
 
             if (anyValue != null)
@@ -55,12 +57,20 @@ namespace reflect_dotnet
         }
     }
 
+    class Generator
+    {
+        public static string Generate() {
+            return "here-is-a-token";
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine(new Parameter("field-name", Parameter.Op.Equals, "Value"));
             Console.WriteLine(new Parameter("field-name", Parameter.Op.Equals, new string[]{"zebra", "foo", "bar"}));
+            Console.WriteLine(Generator.Generate());
         }
     }
 }
