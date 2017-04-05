@@ -31,6 +31,10 @@ namespace Reflect.Tests
             new Parameter("Hobbies", Parameter.Op.Contains, new string[1]{"Fishing"}),
         };
 
+        private static Parameter[] parameters3 = new Parameter[1]{
+            new Parameter("Name", Parameter.Op.NotEquals, "Bill"),
+        };
+
         private static TestCase[] testCases = new TestCase[4]
         {
             new TestCase("a1b2c3d4", parameters1, "=2=mD8u93SxbcwoZfqtYrNNlf6vGxLWW/TyCQ3Pj5gI+Bk="),
@@ -39,12 +43,25 @@ namespace Reflect.Tests
             new TestCase("some-much-longer-token", parameters2, "=2=aWWfIEUJBeP3Pz2Sd8EyyLkQ2q6Lx06v0mEXNMk68ls="),
         };
 
+        private static TestCase[] failCases = new TestCase[1]
+        {
+            new TestCase("a1b2c3d4", parameters3, "=2=mD8u93SxbcwoZfqtYrNNlf6vGxLWW/TyCQ3Pj5gI+Bk="),
+        };
+
         [Fact]
         public void TestParameterString()
         {
             foreach (TestCase testCase in testCases)
             {
                 Assert.Equal(
+                    testCase.expectedTokenValue,
+                    TokenGenerator.Generate(testCase.secretKey, testCase.parameters)
+                );
+            }
+
+            foreach (TestCase testCase in failCases)
+            {
+                Assert.NotEqual(
                     testCase.expectedTokenValue,
                     TokenGenerator.Generate(testCase.secretKey, testCase.parameters)
                 );
