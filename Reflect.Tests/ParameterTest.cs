@@ -1,7 +1,5 @@
 using Xunit;
-using System;
 using Reflect;
-using System.Collections.Generic;
 
 namespace Reflect.Tests
 {
