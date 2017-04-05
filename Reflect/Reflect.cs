@@ -1,9 +1,9 @@
 ﻿using System;
-using static Newtonsoft.Json.JsonConvert;
-using static System.Text.Encoding;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
+using static Newtonsoft.Json.JsonConvert;
+using static System.Text.Encoding;
 
 namespace Reflect
 {
