@@ -16,7 +16,7 @@ namespace Reflect
 
         public enum Op
         {
-            Equals, NotEquals, GreaterThan, LessThan, GreaterThanOrEqualTo, LessThanOrEqualTo, Contains
+            Equals, NotEquals, GreaterThan, LessThan, GreaterThanOrEqualTo, LessThanOrEqualTo, Contains, DoesNotContain
         }
 
         private string opString()
@@ -30,6 +30,7 @@ namespace Reflect
                 case Op.GreaterThanOrEqualTo: return ">=";
                 case Op.LessThanOrEqualTo: return "<=";
                 case Op.Contains: return "=~";
+                case Op.DoesNotContain: return "!~";
                 default: return "";
             }
         }
