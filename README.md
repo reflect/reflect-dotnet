@@ -12,7 +12,7 @@ var secretKey = "74678a9b-685c-4c14-ac45-7312fe29de06";
 
 var parameter = new Reflect.Tokens.Parameter("My Field", Parameter.Op.Equal, "My Value");
 
-var token = new TokenBuilder(accessKey)
+var token = new Reflect.Tokens.TokenBuilder(accessKey)
     .SetAttribute("user-id", 1234)
     .SetAttribute("user-name", "Billy Bob")
     .AddParameter(parameter)
