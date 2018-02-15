@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-  <id>Reflect.TokenGenerator</id>
+    <id>Reflect.Client</id>
   </metadata>
 </package>
