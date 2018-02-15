@@ -1,14 +1,20 @@
-# Reflect .NET Token Generator
+# reflect-dotnet
 
-Usage:
+This is a client for the [Reflect API](https://reflect.io/docs/).
+
+## Generating an Authentication Token
+
+Here's an example of how to generate an encrypted authentication token:
 
 ```csharp
-using Reflect;
+var accessKey = "d232c1e5-6083-4aa7-9042-0547052cc5dd";
+var secretKey = "74678a9b-685c-4c14-ac45-7312fe29de06";
 
-Parameter[] params = new Parameter[2]{
-    new Parameter("Region", Parameter.Op.Equals, "Northwest"),
-    new Parameter("Name", Parameter.Op.NotEquals, "Jonas"),
-}
+var parameter = new Reflect.Tokens.Parameter("My Field", Parameter.Op.Equal, "My Value");
 
-string signedToken = TokenGenerator.Generate("some-secret-key", params);
+var token = new TokenBuilder(accessKey)
+    .SetAttribute("user-id", 1234)
+    .SetAttribute("user-name", "Billy Bob")
+    .AddParameter(parameter)
+    .Build(secretKey);
 ```
