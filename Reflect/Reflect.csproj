@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
+    <PackageId>Reflect.Client</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Reflect Technologies, Inc.</Authors>
+    <Company>Reflect Technologies, Inc.</Company>
+    <PackageLicenseUrl>https://github.com/reflect/reflect-dotnet/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/reflect/reflect-dotnet</PackageProjectUrl>
+    <Description>A client library for interacting with the Reflect (reflect.io) API.</Description>
+    <Copyright>Copyright 2017-2018 Reflect Technologies, Inc.</Copyright>
+    <PackageTags>charts graphics viz visualizations api</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
